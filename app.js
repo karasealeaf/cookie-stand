@@ -19,7 +19,7 @@ function randomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function Shops(
+function City(
   location,
   minCust,
   maxCust,
@@ -50,38 +50,36 @@ function Shops(
   this.calculateSales();
 }
 
-Shops.prototype.render = function () {
+City.prototype.render = function () {
   const shopSales = document.getElementById("shopSales");
 
   const article = document.createElement("article");
 
   const h2 = document.createElement("h2");
-  h2.textContent = shops.calculateSales;
+  h2.textContent = City.calculateSales;
   article.appendChild(h2);
 
   const p = document.createElement("p");
-  p.textContent = `${shops.calculateSales} is ${shops.cookiesPerHour} avergeing ${shops.avgCookiesPerCust}`;
+  p.textContent = `${City.calculateSales} is ${City.cookiesPerHour} avergeing ${City.avgCookiesPerCust}`;
   article.appendChild(p);
 
   const salesData = document.getElementById("salesData");
 
   const ul = document.createElement("ul");
-  
-  }
+};
 
-  const seattle = new Shops("Seattle", 23, 65, 6.3, [], [], 0);
+const seattle = new City("Seattle", 23, 65, 6.3, [], [], 0);
 
-  const tokyo = new Shops("Seattle", 3, 24, 1.2, [], [], 0);
+const tokyo = new City("Seattle", 3, 24, 1.2, [], [], 0);
 
-  const dubai = new Shops("Dubai", 11, 38, 3.7, [], [], 0);
+const dubai = new City("Dubai", 11, 38, 3.7, [], [], 0);
 
-  const paris = new Shops("Paris", 20, 38, 2.3, [], [], 0);
+const paris = new City("Paris", 20, 38, 2.3, [], [], 0);
 
-  const lima = new Shops("Lima", 2, 16, 4.6, [], [], 0);
+const lima = new City("Lima", 2, 16, 4.6, [], [], 0);
 
-  seattle.render();
-  tokyo.render();
-  dubai.render();
-  paris.render();
-  lima.render();
-}
+seattle.render();
+tokyo.render();
+dubai.render();
+paris.render();
+lima.render();

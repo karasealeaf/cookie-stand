@@ -66,12 +66,7 @@ Shops.prototype.render = function () {
   const salesData = document.getElementById("salesData");
 
   const ul = document.createElement("ul");
-  for (let i = 0; i < Shops.calculateSales.length; i++) {
-    const li = document.createElement("li");
-    li.textContent = Shops.calculateSales[i];
-    ul.appendChild(li);
-
-    shopSales.appendChild(ul);
+  
   }
 
   const seattle = new Shops("Seattle", 23, 65, 6.3, [], [], 0);
@@ -89,4 +84,4 @@ Shops.prototype.render = function () {
   dubai.render();
   paris.render();
   lima.render();
-};
+}

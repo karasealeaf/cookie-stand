@@ -1,3 +1,5 @@
+console.log("Hello are you working????");
+
 const hours = [
   "6am",
   "7am",
@@ -46,8 +48,6 @@ function City(
       this.totalCookieSold = this.totalCookieSold + hourCookiesSold;
     }
   }
-
-  this.calculateSales();
 }
 
 City.prototype.render = function () {
@@ -59,9 +59,9 @@ City.prototype.render = function () {
   h2.textContent = City.calculateSales;
   article.appendChild(h2);
 
-  const p = document.createElement("p");
-  p.textContent = `${City.calculateSales} is ${City.cookiesPerHour} avergeing ${City.avgCookiesPerCust}`;
-  article.appendChild(p);
+  const table = document.createElement("table");
+  table.textContent = `${City.calculateSales} is ${City.cookiesPerHour} avergeing ${City.avgCookiesPerCust}`;
+  article.appendChild(table);
 
   const salesData = document.getElementById("salesData");
 

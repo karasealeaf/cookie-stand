@@ -19,42 +19,74 @@ function randomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-const seattle = {
-  location: "seattle",
-  minCust: 23,
-  maxCust: 65,
-  avgCookiesPerCust: 6.3,
-  customersPerHour: [],
-  cookiesPerHour: [],
-  totalCookieSold: 0,
-  calculateSales: function () {
+function Shops(
+  location,
+  minCust,
+  maxCust,
+  avgCookiesPerCust,
+  customersPerHour,
+  cookiesPerHour,
+  totalCookieSold
+) {
+  this.location = location;
+  this.minCust = minCust;
+  this.maxCust = maxCust;
+  this.avgCookiesPerCust = avgCookiesPerCust;
+  this.customersPerHour = customersPerHour;
+  this.cookiesPerHour = cookiesPerHour;
+  this.totalCookieSold = totalCookieSold;
+  function calculateSales() {
     for (let i = 0; i < hours.length; i++) {
-      const randNum = randomNumber(this.minCust, this.maxCust);
-      this.customersPerHour.push(randNum);
-      this.cookiesPerHour.push(randNum * this.avgCookiesPerCust);
+      const hourCustomers = randomNumber(this.minCust, this.maxCust);
+      this.customersPerHour.push(hourCustomers);
+      const hourCookiesSold = math.floor(
+        hourCustomers * this.avgCookiesPerCust
+      );
+      this.cookiesPerHour.push(hourCookiesSold);
+      this.totalCookieSold = this.totalCookieSold + hourCookiesSold;
     }
-  },
-};
+  }
 
-seattle.calculateSales();
-console.log(seattle);
-
-const salesData = document.getElementById("salesData");
-
-const article = document.createElement("article");
-
-const h2 = document.createElement("h2");
-h2.textContent = seattle.calculateSales;
-article.appendChild(h2);
-
-const p = document.createElement("p");
-p.textContent = `${seattle.calculateSales} is ${seattle.cookiesPerHour} avergeing ${seattle.avgCookiesPerCust}`;
-article.appendChild(p);
-
-const ul = document.createElement("ul");
-for (let i = 0; i < seattle.calculateSales.length; i++) {
-  const li = document.createElement("li");
-  li.textContent = seattle.calculateSales[i];
-  ul.appendChild(li);
+  this.calculateSales();
 }
-article.appendChild(ul);
+
+Shops.prototype.render = function () {
+  const shopSales = document.getElementById("shopSales");
+
+  const article = document.createElement("article");
+
+  const h2 = document.createElement("h2");
+  h2.textContent = shops.calculateSales;
+  article.appendChild(h2);
+
+  const p = document.createElement("p");
+  p.textContent = `${shops.calculateSales} is ${shops.cookiesPerHour} avergeing ${shops.avgCookiesPerCust}`;
+  article.appendChild(p);
+
+  const salesData = document.getElementById("salesData");
+
+  const ul = document.createElement("ul");
+  for (let i = 0; i < Shops.calculateSales.length; i++) {
+    const li = document.createElement("li");
+    li.textContent = Shops.calculateSales[i];
+    ul.appendChild(li);
+
+    shopSales.appendChild(ul);
+  }
+
+  const seattle = new Shops("Seattle", 23, 65, 6.3, [], [], 0);
+
+  const tokyo = new Shops("Seattle", 3, 24, 1.2, [], [], 0);
+
+  const dubai = new Shops("Dubai", 11, 38, 3.7, [], [], 0);
+
+  const paris = new Shops("Paris", 20, 38, 2.3, [], [], 0);
+
+  const lima = new Shops("Lima", 2, 16, 4.6, [], [], 0);
+
+  seattle.render();
+  tokyo.render();
+  dubai.render();
+  paris.render();
+  lima.render();
+};

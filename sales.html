@@ -4,10 +4,34 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sales</title>
-    <script src="./app.js"></script>
+    <script src="./app.js" defer></script>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <table id="salesData"></table>
+    <header><h1>Salmon Cookies</h1></header>
+    <main>
+      <h2>Cookies sold!</h2>
+
+      <form id="Newcookiestore">
+        <fieldset>
+          <legend>New store form</legend>
+          <label>City: </label>
+          <input location="City" />
+          <label>Minimum customers per hour: </label>
+          <input mincustomers="Minnumofcustomers" />
+          <label>Maximum customers per hour: </label>
+          <input maxcustomers="Maxnumofcustomers" />
+          <label>Average cookies sold per customer: </label>
+          <input avgcookiespercust="Cookiespercustomer" />
+          <label>Customers per hour: </label>
+          <input custperhour="Howmanycustomersperhour" />
+          <label>Cookies per sold per hour: </label>
+          <input cookiesperhour="Howmanycookiesperhour" />
+          <button>Submit</button>
+        </fieldset>
+      </form>
+
+      <table id="salesData"></table>
+    </main>
   </body>
 </html>

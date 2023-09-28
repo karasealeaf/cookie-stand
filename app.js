@@ -39,17 +39,17 @@ function CookieStore(
   this.totalCookieSold = 0;
 }
 
-CookieStore.prototype.calculateSales = function () {};
+CookieStore.prototype.calculateSales = function () {
+  for (let i = 0; i < hours.length; i++) {
+    const hourCustomers = randomNumber(this.minCust, this.maxCust);
+    this.customersPerHour.push(hourCustomers);
 
-for (let i = 0; i < hours.length; i++) {
-  const hourCustomers = randomNumber(this.minCust, this.maxCust);
-  this.customersPerHour.push(hourCustomers);
+    const hourCookiesSold = Math.floor(hourCustomers * this.avgCookiesPerCust);
+    this.cookiesPerHour.push(hourCookiesSold);
 
-  const hourCookiesSold = math.floor(hourCustomers * this.avgCookiesPerCust);
-  this.cookiesPerHour.push(hourCookiesSold);
-
-  this.totalCookieSold = this.totalCookieSold + hourCookiesSold;
-}
+    this.totalCookieSold = this.totalCookieSold + hourCookiesSold;
+  }
+};
 
 CookieStore.prototype.render = function () {
   this.calculateSales();
@@ -70,6 +70,8 @@ CookieStore.prototype.render = function () {
   totalTd.textContent = this.totalCookieSold;
   tr.appendChild(totalTd);
   table.appendChild(tr);
+
+  const footer = document.querySelector("footer");
 };
 
 const seattle = new CookieStore("Seattle", 23, 65, 6.3, [], [], 0);
@@ -103,3 +105,29 @@ tokyo.render();
 dubai.render();
 paris.render();
 lima.render();
+
+const form = document.getElementById("Newcookiestore");
+
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const location = event.target.location.value;
+  const minCust = event.target.minCust.value;
+  const maxCust = event.target.maxCust.value;
+  const avgCookiesPerCust = event.target.avgCookiesPerCust.value;
+  const customersPerHour = event.target.customersPerHour.value;
+  const cookiesPerHour = event.target.cookiesPerHour.value;
+  const totalCookieSold = event.target.totalCookieSold.value;
+
+  const newCookieStore = new CookieStore(
+    location,
+    minCust,
+    maxCust,
+    avgCookiesPerCust,
+    [],
+    [],
+    []
+  );
+
+  newCookieStore.render();
+});

@@ -17,6 +17,9 @@ body {
   color: lime;
   font-family: monospace;
   font-size: 1rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 input {
@@ -45,4 +48,23 @@ button {
   font-family: fantasy;
   font-size: 1rem;
   align-self: center;
+}
+
+header {
+  background-color: salmon;
+  color: darkslategray;
+  width: 100%;
+  text-align: center;
+  font-size: 4rem;
+  padding: 80px;
+}
+
+img {
+  width: 80%;
+  margin: 150px;
+}
+.sales-html {
+  outline-color: salmon;
+  background-color: salmon;
+  font-size: 3rem;
 }

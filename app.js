@@ -131,3 +131,30 @@ form.addEventListener("submit", function (event) {
 
   newCookieStore.render();
 });
+function renderTotalRow() {
+  const oldTr = document.getElementById("totalrow");
+  oldTr?.remove(); // ? means its won't run .remove() if oldTr is null (meaning it isn't on the page)
+
+  const tr = document.createElement("tr");
+  tr.setAttribute("id", "totalrow");
+
+  const th = document.createElement("th");
+  th.textContent = "Hourly Total";
+  tr.appendChild(th);
+
+  for (let i = 0; i < hours.length; i++) {
+    let hourlyTotal = 0;
+
+    for (let k = 0; k < stores.length; k++) {
+      hourlyTotal = hourlyTotal + stores[k].cookiesPerHour[i];
+    }
+
+    const td = document.createElement("td");
+    td.textContent = hourlyTotal;
+    tr.appendChild(td);
+  }
+
+  table.appendChild(tr);
+}
+
+renderTotalRow();
